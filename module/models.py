@@ -5,3 +5,43 @@ from django.db import models
 class dangNhap(models.Model):
     maDangNhap=models.CharField(null=False,max_length=255)
     matKhau=models.CharField(null=False,max_length=255)
+
+class laThuoc(models.Model):
+    maLa=models.CharField(null=False,max_length=255)
+    tenLa=models.CharField(null=False,max_length=255)
+    tenKhac=models.CharField(null=True,max_length=255)
+    tenKhoaHoc=models.CharField(null=False,max_length=255)
+    moTa=models.TextField(null=True,blank=True)
+
+class dieuTri(models.Model):
+    maDieuTri=models.CharField(null=False,max_length=255)
+    maBenh=models.CharField(null=False,max_length=255)
+
+class tinTuc(models.Model):
+    maTinTuc=models.CharField(null=False,max_length=255)
+    ngayDang=models.DateTimeField(null=False)
+    tieuDe=models.CharField(null=False,max_length=255)
+
+class ctTinTuc(models.Model):
+    maTinTuc=models.CharField(null=False,max_length=255)
+    noiDung=models.TextField(null=False,blank=False)
+    viTri=models.IntegerField(null=False)
+    kieuDuLieu=models.CharField(null=False,max_length=255)
+
+class donHang(models.Model):
+    maDonHang=models.CharField(null=False,max_length=255)
+    maKhachHang=models.CharField(null=False,max_length=255)
+    ngayLap=models.DateTimeField(null=False)
+    
+class ctDonHang(models.Model):
+    maDonHang=models.CharField(null=False,max_length=255)
+    maLa=models.CharField(null=False,max_length=255)
+    soLuong=models.IntegerField(null=False)
+
+class benhGan(models.Model):
+    maBenh=models.CharField(null=False,max_length=255)
+    timHieuChung=models.TextField(null=False,blank=False)
+    nguyenNhan=models.TextField(null=False,blank=False)
+    nguyCo=models.TextField(null=False,blank=False)
+    dieuTri=models.TextField(null=False,blank=False)
+    cheDoSinhHoat=models.TextField(null=False,blank=False)

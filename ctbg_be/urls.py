@@ -19,5 +19,5 @@ from module import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('predict/', views.GetPredictedResult.as_view()),
+    path('predict', views.GetPredictedResult.as_view()),
 ]

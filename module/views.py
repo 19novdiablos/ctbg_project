@@ -1,5 +1,6 @@
+from io import BytesIO
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status,request
 from django.http import JsonResponse
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
@@ -7,23 +8,26 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from keras.models import load_model
 import numpy as np
 import cv2
+from PIL import Image
+import requests
 
 # Create your views here.
 
 class GetPredictedResult(ListCreateAPIView):
     resnet_model=load_model('/Users/haidang/Downloads/resnet50.model')
-    class_names=['AnXoa', 'CaGaiLeo', 'CayMaDe', 'CaySamBien', 'DayThiaCanh', 'DuDu', 'LaDauTam', 'LaOLiu', 'LaSen', 'NgayTia', 'NgheXanh', 'Ngo', 'TraiMam', 'XaDen']
+    class_names=['An Xoa', 'Cà Gai Leo', 'Mã Đề', 'Sam Biển', 'Dây Thìa Canh', 'Đu Đủ', 'Lá Dâu Tầm', 'Lá Ô Liu', 'Lá Sen', 'Ngải Tía', 'Nghệ Xanh', 'Ngô', 'Trái Mấm', 'Xạ Đen']
     def get(self,request):
-        url = 'https://duockienminh.vn/sites/default/files/anh_bai_viet/1-la-du-du-la-gi-tai-sao-nhieu-ngu.jpg'
-        # req = urllib.request.urlopen(url)
-        # arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
-        # image = cv2.imdecode(arr,1)
-        image=cv2.imread('/Users/haidang/Documents/Zalo Received Files/DuLieu/phanloaila/3_XaDen/1-2874.jpeg')
+        url = self.request.query_params.get('url')
+        #img = Image.open(BytesIO(requests.get('/Users/haidang/Downloads/dudu.jpg').content)) 
+        img=cv2.imread(url)                                
+        image=cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
         image_resized = cv2.resize(image,(224,224))
         image=np.expand_dims(image_resized,axis=0)
         pred = self.resnet_model.predict(image)
         accuracy = float("{:.2f}".format(max(pred[0]))) * 100
         accuracy = int(accuracy)
-        return JsonResponse({
+        obj = JsonResponse({
                 'Loai': ''+self.class_names[np.argmax(pred)],
-            }, status=status.HTTP_201_CREATED)
+                'DoChinhXac': accuracy,
+            }, status=status.HTTP_201_CREATED,safe=False, json_dumps_params={'ensure_ascii': False})
+        return obj
