@@ -9,9 +9,14 @@ class dangNhap(models.Model):
 class laThuoc(models.Model):
     maLa=models.CharField(null=False,max_length=255)
     tenLa=models.CharField(null=False,max_length=255)
-    tenKhac=models.CharField(null=True,max_length=255)
+    tenKhac=models.CharField(null=True,max_length=255,blank=True)
     tenKhoaHoc=models.CharField(null=False,max_length=255)
     moTa=models.TextField(null=True,blank=True)
+    maDieuTri=models.CharField(null=False,max_length=255)
+    giaBan=models.IntegerField(null=False)
+    phanBo=models.TextField(null=True,blank=True)
+    cachDung=models.TextField(null=True,blank=True)
+    soLuongCon=models.IntegerField(null=False)
 
 class dieuTri(models.Model):
     maDieuTri=models.CharField(null=False,max_length=255)

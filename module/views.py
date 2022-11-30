@@ -1,8 +1,12 @@
 from io import BytesIO
 from django.shortcuts import render
-from rest_framework import status,request
+from rest_framework import status,viewsets
+from rest_framework.generics import (ListCreateAPIView,DestroyAPIView,UpdateAPIView)
 from django.http import JsonResponse
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+#import models
+from .models import laThuoc
+from .serializers import *
 
 #thư viện sử lý predict
 from keras.models import load_model
@@ -26,8 +30,18 @@ class GetPredictedResult(ListCreateAPIView):
         pred = self.resnet_model.predict(image)
         accuracy = float("{:.2f}".format(max(pred[0]))) * 100
         accuracy = int(accuracy)
-        obj = JsonResponse({
+        return JsonResponse({
                 'Loai': ''+self.class_names[np.argmax(pred)],
                 'DoChinhXac': accuracy,
             }, status=status.HTTP_201_CREATED,safe=False, json_dumps_params={'ensure_ascii': False})
-        return obj
+
+class LaCayViewSet(viewsets.ModelViewSet,DestroyAPIView,UpdateAPIView):
+    queryset=laThuoc.objects.all()
+    serializer_class =LaCaySerializer
+
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+
+class BenhGanViewSet(viewsets.ModelViewSet):
+    queryset=benhGan.objects.all()
+    serializer_class =BenhGanSerializer
