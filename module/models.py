@@ -50,3 +50,6 @@ class benhGan(models.Model):
     nguyCo=models.TextField(null=False,blank=False)
     dieuTri=models.TextField(null=False,blank=False)
     cheDoSinhHoat=models.TextField(null=False,blank=False)
+
+class luuTruFile(models.Model):
+    file=models.ImageField(upload_to='clipboard',null=False,default=None)

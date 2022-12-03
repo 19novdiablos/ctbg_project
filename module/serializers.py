@@ -10,3 +10,8 @@ class BenhGanSerializer(serializers.ModelSerializer):
     class Meta:
         model=benhGan
         fields=('maBenh','timHieuChung','nguyenNhan','nguyCo','dieuTri','cheDoSinhHoat')
+
+class LuuTruFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=luuTruFile
+        fields=('file',)
