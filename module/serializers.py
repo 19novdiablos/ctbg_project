@@ -11,7 +11,7 @@ class BenhGanSerializer(serializers.ModelSerializer):
         model=benhGan
         fields=('maBenh','timHieuChung','nguyenNhan','nguyCo','dieuTri','cheDoSinhHoat')
 
-class LuuTruFileSerializer(serializers.ModelSerializer):
+class ClipboardSerializer(serializers.ModelSerializer):
     class Meta:
-        model=luuTruFile
+        model=clipboard
         fields=('file',)

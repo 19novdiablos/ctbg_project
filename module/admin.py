@@ -5,4 +5,4 @@ from .models import *
 
 admin.site.register(dangNhap)
 admin.site.register(laThuoc)
-admin.site.register(luuTruFile)
+admin.site.register(clipboard)

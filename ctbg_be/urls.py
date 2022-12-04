@@ -26,7 +26,7 @@ from django.conf.urls.static import static
 router=DefaultRouter()
 router.register('lathuoc',views.LaCayViewSet)
 router.register('benhgan',views.BenhGanViewSet)
-router.register('clipboard',views.LuuTruFileViewSet)
+router.register('clipboard',views.ClipBoardViewSet)
 
 schema_view = get_schema_view(
    openapi.Info(
