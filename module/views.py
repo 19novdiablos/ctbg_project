@@ -16,7 +16,8 @@ import cv2
 # Create your views here.
 
 class GetPredictedResult(ListCreateAPIView):
-    resnet_model=load_model('/Users/haidang/Downloads/resnet50.model')
+    # resnet_model=load_model('/Users/haidang/Downloads/resnet50.model')
+    resnet_model=load_model('E:/Resnet50/Model/resnet50.model')
     class_names=['An Xoa', 'Cà Gai Leo', 'Mã Đề', 'Sam Biển', 'Dây Thìa Canh', 'Đu Đủ', 'Lá Dâu Tầm', 'Lá Ô Liu', 'Lá Sen', 'Ngải Tía', 'Nghệ Xanh', 'Ngô', 'Trái Mấm', 'Xạ Đen']
     def get(self,request):
         # img=cv2.imread(img)                                
