@@ -69,24 +69,37 @@ resnet_model.add(Dense(14, activation='softmax'))
  
 resnet_model.compile(optimizer=Adam(lr=0.001),loss='categorical_crossentropy',metrics=['accuracy'])
 
+
 #Build Website
+
 ![image](https://user-images.githubusercontent.com/84515603/222319393-b91f0a24-7dee-40c8-9b53-55cd88e18125.png)
+
 
 ![image](https://user-images.githubusercontent.com/84515603/222319444-83c6b6e6-57a7-4b90-b249-6fedbee05ac5.png)
 
+
 Product
+
 ![image](https://user-images.githubusercontent.com/84515603/222319484-db5b5389-f707-4d42-9f08-572c08d8391c.png)
 
+
 Product detail
+
 ![image](https://user-images.githubusercontent.com/84515603/222319633-f74a80c9-9eb6-4d9c-b670-5112128712f0.png)
 
+
 Classification leaf from camera
+
 ![image](https://user-images.githubusercontent.com/84515603/222319739-c3b2c06f-1b91-4312-b33c-4bd5163a5726.png)
 
+
 Cart
+
 ![image](https://user-images.githubusercontent.com/84515603/222319797-f4a70a5f-8fd1-4da2-b2cc-f4785be28131.png)
 
+
 Payment
+
 ![image](https://user-images.githubusercontent.com/84515603/222319835-60cca938-9bbe-4475-b450-f56e4cfb24b9.png)
 
 
